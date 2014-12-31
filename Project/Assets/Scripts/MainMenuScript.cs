@@ -24,6 +24,8 @@ public class MainMenuScript : MonoBehaviour {
 			Application.Quit ();
 		else if (button == Button.Play)
 			Application.LoadLevel ("GrassLevel2");
+		else if (button == Button.About)
+			Application.LoadLevel ("About");
 		else if (PlayerPrefs.GetString("Sound") == "On")
 			PlayerPrefs.SetString ("Sound", "Off");
 		else
