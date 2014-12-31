@@ -271,6 +271,7 @@ MonoBehaviour:
   bouncers: []
   maxUpJump: 3.20000005
   maxDownJump: 3.5
+  minimumDifferenceInX: .5
   surfaceChange: .100000001
 --- !u!1 &118560005
 GameObject:
@@ -1029,7 +1030,7 @@ Transform:
   m_PrefabInternal: {fileID: 1157863307}
   m_GameObject: {fileID: 774525298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.25829601, y: 5.86886024, z: 0}
+  m_LocalPosition: {x: -2.25978971, y: 5.96789694, z: 0}
   m_LocalScale: {x: 1.25, y: 1, z: 1}
   m_Children:
   - {fileID: 1640727652}
@@ -1588,11 +1589,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400004, guid: 2fbe894e42b522f4b8efc92c9410f3ae, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.25829601
+      value: -2.25978971
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 2fbe894e42b522f4b8efc92c9410f3ae, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5.86886024
+      value: 5.96789694
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 2fbe894e42b522f4b8efc92c9410f3ae, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2161,6 +2162,14 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: -.173541427
       objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 475619914ed4e8e4a91dddac8051b381, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -.0444095246
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 475619914ed4e8e4a91dddac8051b381, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: .0102480715
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 475619914ed4e8e4a91dddac8051b381, type: 2}
   m_RootGameObject: {fileID: 1438964884}
@@ -2555,7 +2564,7 @@ Transform:
   m_PrefabInternal: {fileID: 1538217924}
   m_GameObject: {fileID: 1813266946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: .0102480715, y: -.0444095246, z: 0}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 1438964885}

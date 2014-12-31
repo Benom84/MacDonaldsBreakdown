@@ -15,6 +15,7 @@ public class MapCreator : MonoBehaviour {
 	public GameObject[] bouncers;
 	public float maxUpJump = 5;
 	public float maxDownJump = 8;
+	public float minimumDifferenceInX = 0.1f;
 	public float surfaceChange = 0.4f;
 	[HideInInspector]
 	public int[,] edgeMatrix;
@@ -47,6 +48,7 @@ public class MapCreator : MonoBehaviour {
 					continue;
 				}
 				float distance = Vector2.Distance(bouncer.transform.position, otherBouncer.transform.position);
+				float horDifference = Mathf.Abs(bouncer.transform.position.x - otherBouncer.transform.position.x);
 
 				// Check if the other bouncer is higher than this
 				bool higher = (otherBouncer.transform.position.y > (bouncer.transform.position.y + surfaceChange));
@@ -59,7 +61,7 @@ public class MapCreator : MonoBehaviour {
 				}
 				else if (higher) 
 				{
-					if (distance < maxUpJump) 
+					if ((distance < maxUpJump) && (horDifference > minimumDifferenceInX)) 
 					{
 						if (bouncer.transform.position.x > otherBouncer.transform.position.x)
 							edgeMatrix[row, col] = 10;
