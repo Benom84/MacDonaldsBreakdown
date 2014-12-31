@@ -8,12 +8,15 @@ public class PlayerHealth : MonoBehaviour
 //	public AudioClip[] ouchClips;				// Array of clips to play when the player is damaged.
 	public float hurtForce = 10f;				// The force with which the player is pushed when hurt.
 	public float damageAmount = 10f;			// The amount of damage to take when enemies touch the player
+	public GameObject playerSpirit;				// The Object of the spirit of the player for the death
 	
 	private SpriteRenderer healthBar;			// Reference to the sprite renderer of the health bar.
 	private float lastHitTime;					// The time at which the player was last hit.
 	private Vector3 healthScale;				// The local scale of the health bar initially (with full health).
 	private PlayerControl playerControl;		// Reference to the PlayerControl script.
+
 //	private Animator anim;						// Reference to the Animator on the player
+
 	
 	
 	void Awake ()
@@ -65,7 +68,14 @@ public class PlayerHealth : MonoBehaviour
 					
 					// ... disable the Gun script to stop a dead guy shooting a nonexistant bazooka
 					GetComponentInChildren<Gun>().enabled = false;
-					
+					rigidbody2D.gravityScale = 0;
+					foreach(SpriteRenderer s in spr)
+					{
+						s.enabled = false;
+					}
+
+					GameObject.Instantiate(playerSpirit,transform.position, transform.rotation);
+
 					// ... Trigger the 'Die' animation state
 //					anim.SetTrigger("Die");
 				}
@@ -104,5 +114,11 @@ public class PlayerHealth : MonoBehaviour
 		
 		// Set the scale of the health bar to be proportional to the player's health.
 		healthBar.transform.localScale = new Vector3(healthScale.x * health * 0.01f, healthScale.y, 1);
+	}
+
+	//setting delay to 2 seconds
+	IEnumerator wait(float seconds) {
+		yield return new WaitForSeconds(seconds);
+		Debug.Log ("Waited for: " + seconds);
 	}
 }

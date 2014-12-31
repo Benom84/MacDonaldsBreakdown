@@ -70,7 +70,8 @@ public class Enemy : MonoBehaviour
 		// Setting up the references.
 		ren = transform.Find ("body").GetComponent<SpriteRenderer> ();
 		frontCheck = transform.Find ("frontCheck").transform;
-//		score = GameObject.Find ("Score").GetComponent<Score> ();
+		score = GameObject.Find ("Score").GetComponent<Score> ();
+
 
 		groundCheck = transform.Find ("groundCheck").transform;
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -156,8 +157,8 @@ public class Enemy : MonoBehaviour
 		// If the enemy has zero or fewer hit points and isn't dead yet...
 		if (HP <= 0 && !dead)
 			// ... call the death function.
-			//Death ();
-						Destroy (gameObject);
+			Death ();
+			
 
 		//Debug.Log ("My xDestination is: " + xDestination);
 	}
@@ -213,45 +214,49 @@ public class Enemy : MonoBehaviour
 
 	void Death ()
 	{
-			// Find all of the sprite renderers on this object and it's children.
-			SpriteRenderer[] otherRenderers = GetComponentsInChildren<SpriteRenderer> ();
 
-			// Disable all of them sprite renderers.
-			foreach (SpriteRenderer s in otherRenderers) {
-					s.enabled = false;
-			}
 
-			// Re-enable the main sprite renderer and set it's sprite to the deadEnemy sprite.
-			ren.enabled = true;
-			ren.sprite = deadEnemy;
 
-			// Increase the score by 100 points
-		//	score.score += 100;
+		// Find all of the sprite renderers on this object and it's children.
+	//	SpriteRenderer[] otherRenderers = GetComponentsInChildren<SpriteRenderer> ();
 
-			// Set dead to true.
-			dead = true;
+		// Disable all of them sprite renderers.
+		//foreach (SpriteRenderer s in otherRenderers) {
+		//		s.enabled = false;
+	//	}
 
-			// Allow the enemy to rotate and spin it by adding a torque.
-			rigidbody2D.fixedAngle = false;
-			rigidbody2D.AddTorque (Random.Range (deathSpinMin, deathSpinMax));
+		// Re-enable the main sprite renderer and set it's sprite to the deadEnemy sprite.
+		//ren.enabled = true;
+		//ren.sprite = deadEnemy;
 
-			// Find all of the colliders on the gameobject and set them all to be triggers.
-			Collider2D[] cols = GetComponents<Collider2D> ();
-			foreach (Collider2D c in cols) {
-					c.isTrigger = true;
-			}
+		// Increase the score by 100 points
+		score.score += 100;
 
-			// Play a random audioclip from the deathClips array.
-			int i = Random.Range (0, deathClips.Length);
-			AudioSource.PlayClipAtPoint (deathClips [i], transform.position);
+		Destroy (gameObject);
+		// Set dead to true.
+		dead = true;
+		return;
+		// Allow the enemy to rotate and spin it by adding a torque.
+		rigidbody2D.fixedAngle = false;
+		rigidbody2D.AddTorque (Random.Range (deathSpinMin, deathSpinMax));
 
-			// Create a vector that is just above the enemy.
-			Vector3 scorePos;
-			scorePos = transform.position;
-			scorePos.y += 1.5f;
+		// Find all of the colliders on the gameobject and set them all to be triggers.
+		Collider2D[] cols = GetComponents<Collider2D> ();
+		foreach (Collider2D c in cols) {
+				c.isTrigger = true;
+		}
 
-			// Instantiate the 100 points prefab at this point.
-			Instantiate (hundredPointsUI, scorePos, Quaternion.identity);
+		// Play a random audioclip from the deathClips array.
+		int i = Random.Range (0, deathClips.Length);
+		AudioSource.PlayClipAtPoint (deathClips [i], transform.position);
+
+		// Create a vector that is just above the enemy.
+		Vector3 scorePos;
+		scorePos = transform.position;
+		scorePos.y += 1.5f;
+
+		// Instantiate the 100 points prefab at this point.
+		Instantiate (hundredPointsUI, scorePos, Quaternion.identity);
 		Destroy (gameObject);
 	}
 
