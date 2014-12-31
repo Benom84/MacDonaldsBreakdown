@@ -223,6 +223,7 @@ MonoBehaviour:
   bouncers: []
   maxUpJump: 4
   maxDownJump: 2.5
+  minimumDifferenceInX: .100000001
   surfaceChange: .100000001
 --- !u!1 &118560005
 GameObject:
@@ -975,7 +976,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &640854346
 Transform:
   m_ObjectHideFlags: 0
@@ -1087,7 +1088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &992464516
 Transform:
   m_ObjectHideFlags: 0
@@ -1219,7 +1220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!132 &1147972623
 GUIText:
   m_ObjectHideFlags: 0
