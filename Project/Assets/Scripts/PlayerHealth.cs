@@ -18,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
 	private float lastHitTime;					// The time at which the player was last hit.
 	private Vector3 healthScale;				// The local scale of the health bar initially (with full health).
 	private PlayerControl playerControl;		// Reference to the PlayerControl script.
+	private bool createdSpirit = false;
 
 //	private Animator anim;						// Reference to the Animator on the player
 
@@ -84,8 +85,10 @@ public class PlayerHealth : MonoBehaviour
 					AudioSource.PlayClipAtPoint(deathClips[i], transform.position);
 
 
-					GameObject.Instantiate(playerSpirit,transform.position, transform.rotation);
-
+					if (!createdSpirit) {
+						createdSpirit = true;
+						GameObject.Instantiate(playerSpirit,transform.position, transform.rotation);
+					}
 					// ... Trigger the 'Die' animation state
 //					anim.SetTrigger("Die");
 				}
