@@ -170,12 +170,23 @@ MonoBehaviour:
   HP: 1
   deadEnemy: {fileID: 0}
   damagedEnemy: {fileID: 0}
-  deathClips: []
   hundredPointsUI: {fileID: 0}
   deathSpinMin: -100
   deathSpinMax: 100
   jumpForce: 380
   jumpForceHor: 60
+  deathClips:
+  - {fileID: 8300000, guid: b377abac46a79454583963bc29d6dc9b, type: 3}
+  - {fileID: 8300000, guid: af0161d29a96aa54ba6a90ebc6edfaae, type: 3}
+  - {fileID: 8300000, guid: 9e45531b69c2ea54aacb8bd692f2daeb, type: 3}
+  jumpClips:
+  - {fileID: 8300000, guid: b72126757060bde4d8a06a8183d2eaee, type: 3}
+  - {fileID: 8300000, guid: 8682111a592a6f14baf8cce60885f195, type: 3}
+  - {fileID: 8300000, guid: 4f081d5626e5d2c4cac6001582dc541a, type: 3}
+  - {fileID: 8300000, guid: 4f081d5626e5d2c4cac6001582dc541a, type: 3}
+  - {fileID: 8300000, guid: 4f081d5626e5d2c4cac6001582dc541a, type: 3}
+  - {fileID: 8300000, guid: 4f081d5626e5d2c4cac6001582dc541a, type: 3}
+  - {fileID: 8300000, guid: 4f081d5626e5d2c4cac6001582dc541a, type: 3}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

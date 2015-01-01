@@ -13,6 +13,11 @@ public class GameMenuButtons : MonoBehaviour {
 		GameObject menu = GameObject.Find ("MenuButton"); 
 		pauser = menu.GetComponent<Pauser>();
 
+		if (button == GameMenuButton.Effects)
+			if (!PlayerPrefs.HasKey ("Effects"))
+				PlayerPrefs.SetString ("Effects", "On");
+
+
 	
 	}
 	
@@ -33,10 +38,13 @@ public class GameMenuButtons : MonoBehaviour {
 		GameObject musicDisableButton = transform.parent.FindChild ("MusicDisabled").gameObject;
 		Debug.Log ("Music Changer: " + musicDisableButton.activeSelf);
 		musicDisableButton.SetActive (!musicDisableButton.activeSelf);
-		if (PlayerPrefs.GetString("Sound") == "On")
+		if (PlayerPrefs.GetString("Sound") == "On") {
+			audio.mute = true;
 			PlayerPrefs.SetString ("Sound", "Off");
-		else
-			PlayerPrefs.SetString ("Sound", "Off");
+		} else {
+			PlayerPrefs.SetString ("Sound", "On");
+			audio.mute = false;
+		}
 	}
 
 	void EffectsChanger() {
@@ -44,10 +52,13 @@ public class GameMenuButtons : MonoBehaviour {
 		GameObject effectsDisableButton = transform.parent.FindChild ("EffectsDisabled").gameObject;
 		Debug.Log ("Effects Changer: " + effectsDisableButton.activeSelf);
 		effectsDisableButton.SetActive (!effectsDisableButton.activeSelf);
-		if (PlayerPrefs.GetString("Effects") == "On")
+		if (PlayerPrefs.GetString("Effects") == "On") {
+			AudioListener.volume = 0;
 			PlayerPrefs.SetString ("Effects", "Off");
-		else
-			PlayerPrefs.SetString ("Effects", "Off");
+		} else {
+			PlayerPrefs.SetString ("Effects", "On");
+			AudioListener.volume = 1;
+		}
 
 	}
 }
