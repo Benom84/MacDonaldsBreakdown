@@ -220,7 +220,7 @@ public class Enemy : MonoBehaviour
 			rigidbody2D.AddForce(new Vector2(jumpForceHor * (left ? -1 : 1), jumpForce/4f));
 
 		int i = Random.Range(0, jumpClips.Length);
-		AudioSource.PlayClipAtPoint(jumpClips, transform.position);
+		AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
 
 		isJumping = true;	
 	

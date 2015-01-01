@@ -2163,6 +2163,7 @@ MonoBehaviour:
     yMax: 10
   moveForce: 365
   maxSpeed: 5
+  jumpClips: []
   jumpForce: 350
 --- !u!61 &1438964888
 BoxCollider2D:
