@@ -9,6 +9,8 @@ public class PlayerHealth : MonoBehaviour
 	public float hurtForce = 10f;				// The force with which the player is pushed when hurt.
 	public float damageAmount = 10f;			// The amount of damage to take when enemies touch the player
 	public GameObject playerSpirit;				// The Object of the spirit of the player for the death
+	[HideInInspector]
+	public bool dead = false;
 	
 	private SpriteRenderer healthBar;			// Reference to the sprite renderer of the health bar.
 	private float lastHitTime;					// The time at which the player was last hit.
@@ -49,6 +51,8 @@ public class PlayerHealth : MonoBehaviour
 				// If the player doesn't have health, do some stuff, let him fall into the river to reload the level.
 				else
 				{
+					dead = true;
+
 					// Find all of the colliders on the gameobject and set them all to be triggers.
 					Collider2D[] cols = GetComponents<Collider2D>();
 					foreach(Collider2D c in cols)
@@ -82,7 +86,17 @@ public class PlayerHealth : MonoBehaviour
 			}
 		}
 	}
-	
+
+	void OnColiisionStay2D(Collision2D col)
+	{
+		// If the colliding gameobject is an Enemy...
+		if (col.gameObject.tag == "Enemy")
+			// ... and if the time exceeds the time of the last hit plus the time between hits...
+			if (Time.time > lastHitTime + repeatDamagePeriod) {
+				OnCollisionEnter2D (col);
+			Debug.Log("Calling on collision enter");
+			}
+	}
 	
 	void TakeDamage (Transform enemy)
 	{
@@ -91,6 +105,12 @@ public class PlayerHealth : MonoBehaviour
 		
 		// Create a vector that's from the enemy to the player with an upwards boost.
 		Vector3 hurtVector = transform.position - enemy.position + Vector3.up * 5f;
+
+		// If the player is to the right of the enemy
+		if (transform.position.x > enemy.position.x)
+			hurtVector.x = 10f;
+		else
+			hurtVector.x = -10f;
 		
 		// Add a force to the player in the direction of the vector and multiply by the hurtForce.
 		rigidbody2D.AddForce(hurtVector * hurtForce);

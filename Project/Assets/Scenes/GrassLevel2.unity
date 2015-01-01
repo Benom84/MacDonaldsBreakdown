@@ -2117,11 +2117,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89eb5ed2be06344a85b0a5a6e31fb96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
-  repeatDamagePeriod: 2
+  health: 100
+  repeatDamagePeriod: 1
   hurtForce: 10
   damageAmount: 10
   playerSpirit: {fileID: 100000, guid: cb4c98e1775d5c345a54fbbee45e8ad8, type: 2}
+  dead: 0
 --- !u!1 &1442520386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2308,7 +2309,15 @@ Prefab:
       objectReference: {fileID: 100000, guid: cb4c98e1775d5c345a54fbbee45e8ad8, type: 2}
     - target: {fileID: 11400004, guid: 475619914ed4e8e4a91dddac8051b381, type: 2}
       propertyPath: health
-      value: 20
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 475619914ed4e8e4a91dddac8051b381, type: 2}
+      propertyPath: hurtForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 475619914ed4e8e4a91dddac8051b381, type: 2}
+      propertyPath: repeatDamagePeriod
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 475619914ed4e8e4a91dddac8051b381, type: 2}

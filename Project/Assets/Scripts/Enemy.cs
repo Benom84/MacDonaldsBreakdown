@@ -59,6 +59,8 @@ public class Enemy : MonoBehaviour
 	private float lastVelocity;
 	private bool justLanded;
 	private bool playerChangedGround;
+	private PlayerHealth playerHealthScript;
+	private bool playerDead;
 
 	private GameObject[] bouncers;		// List of all Bouncers
 	private int[,] edgeMatrix;			// The edge matrix
@@ -76,6 +78,7 @@ public class Enemy : MonoBehaviour
 		groundCheck = transform.Find ("groundCheck").transform;
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerScript = player.GetComponent<PlayerControl> ();
+		playerHealthScript = player.GetComponent<PlayerHealth> ();
 		oldPlayerGround = 0;
 
 
@@ -93,6 +96,18 @@ public class Enemy : MonoBehaviour
 	void FixedUpdate ()
 	{
 
+		grounded = Physics2D.Linecast (transform.position, groundCheck.position, 1 << LayerMask.NameToLayer ("Ground"));
+		playerDead = playerHealthScript.dead;
+
+		// If the enemy is on the ground and the player is dead
+		if (playerDead && grounded) {
+			Vector2 vel = rigidbody2D.velocity;
+			vel.x *= 0;
+			rigidbody2D.velocity = vel;
+			rigidbody2D.AddForce(new Vector2(0,jumpForce/5));
+		
+		}
+
 		// If the enemy is not moving at the y axis
 		if ((transform.rigidbody2D.velocity.y == 0) && (lastVelocity == 0) && !(isJumping))
 			if (((transform.position.x - xDestination < 0.1) && left) || 
@@ -101,7 +116,7 @@ public class Enemy : MonoBehaviour
 			Flip ();
 		}
 
-		grounded = Physics2D.Linecast (transform.position, groundCheck.position, 1 << LayerMask.NameToLayer ("Ground"));
+
 
 		if (grounded) 
 			ground = Physics2D.Linecast (transform.position, groundCheck.position, 1 << LayerMask.NameToLayer ("Ground")).collider.gameObject.GetInstanceID ();
@@ -177,7 +192,7 @@ public class Enemy : MonoBehaviour
 
 	private void Jump()
 	{
-		Debug.Log("I should jump " + nextBouncerNode.getJumpType() + " the bouncer is " + nextBouncerNode.getBouncer().GetInstanceID()	);
+		//Debug.Log("I should jump " + nextBouncerNode.getJumpType() + " the bouncer is " + nextBouncerNode.getBouncer().GetInstanceID()	);
 		bool directionChange = false;
 		int jumpType = nextBouncerNode.getJumpType ();
 		// Init the nextBouncerNode so that onTriggerStay2D won't activate again
@@ -186,12 +201,12 @@ public class Enemy : MonoBehaviour
 		int jumpVerticalDirection = jumpType / 10; //1 is up, 2 is down
 
 		if ((jumpHorizontalDirection == 0) && !left) {
-			Debug.Log ("I should jump to the left and I'm going right - so flip");
+			//Debug.Log ("I should jump to the left and I'm going right - so flip");
 			directionChange = true;
 			Flip ();
 		} else if ((jumpHorizontalDirection == 1) && left) {
 			directionChange = true;
-			Debug.Log("I should jump to the right and I'm going left - so flip");
+			//Debug.Log("I should jump to the right and I'm going left - so flip");
 			Flip ();
 		}
 
