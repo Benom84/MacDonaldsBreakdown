@@ -31,8 +31,11 @@ public class PlayerSpiritScript : MonoBehaviour {
 		float y = transform.position.y;
 		if (y > loseMenuAppears) {
 			if (!createdMenu) {
+				Debug.Log ("CreatedMenu1: " + createdMenu);
 				createdMenu = true;
+				Debug.Log ("CreatedMenu2: " + createdMenu);
 				GameObject.Instantiate (loseMenu, loseMenu.transform.position, loseMenu.transform.rotation);
+				Debug.Log ("CreatedMenu3: " + createdMenu);
 				pauseButton.GetComponentInChildren<Pauser>().enabled = false;
 				StopEnemies();
 			}
