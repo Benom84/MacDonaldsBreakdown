@@ -1,10 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerHealth.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerSpiritScript.cs">
     <Files>
+      <File FileName="Assets\Scripts\PlayerSpiritScript.cs" Line="36" Column="5" />
+      <File FileName="Assets\Scripts\PlayerHealth.cs" Line="74" Column="52" />
       <File FileName="Assets\Scripts\PlayerControl.cs" Line="81" Column="15" />
-      <File FileName="Assets\Scripts\Enemy.cs" Line="152" Column="16" />
-      <File FileName="Assets\Scripts\PlayerHealth.cs" Line="97" Column="44" />
+      <File FileName="Assets\Scripts\Enemy.cs" Line="80" Column="56" />
+      <File FileName="Assets\Scripts\FirstTextCollider.cs" Line="30" Column="3" />
+      <File FileName="Assets\Scripts\MapCreator.cs" Line="26" Column="60" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
