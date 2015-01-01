@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 [System.Serializable]
@@ -22,7 +22,7 @@ public class PlayerControl : MonoBehaviour
 	
 	public float moveForce;			// Amount of force added to move the player left and right.
 	public float maxSpeed;				// The fastest the player can travel in the x axis.
-	//public AudioClip[] jumpClips;			// Array of clips for when the player jumps.
+	public AudioClip[] jumpClips;			// Array of clips for when the player jumps.
 	public float jumpForce;			// Amount of force added when the player jumps.
 	
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
@@ -104,8 +104,8 @@ public class PlayerControl : MonoBehaviour
 			//anim.SetTrigger("Jump");
 			
 			// Play a random jump audio clip.
-			//	int i = Random.Range(0, jumpClips.Length);
-			//	AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
+			int i = Random.Range(0, jumpClips.Length);
+			AudioSource.PlayClipAtPoint(jumpClips, transform.position);
 			
 			// Add a vertical force to the player.
 			rigidbody2D.AddForce(new Vector2(0f, jumpForce));
