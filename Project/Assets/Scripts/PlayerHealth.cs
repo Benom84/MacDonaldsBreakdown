@@ -1,16 +1,18 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {	
 	public float health = 100f;					// The player's health.
 	public float repeatDamagePeriod = 2f;		// How frequently the player can be damaged.
-//	public AudioClip[] ouchClips;				// Array of clips to play when the player is damaged.
 	public float hurtForce = 10f;				// The force with which the player is pushed when hurt.
 	public float damageAmount = 10f;			// The amount of damage to take when enemies touch the player
 	public GameObject playerSpirit;				// The Object of the spirit of the player for the death
 	[HideInInspector]
-	public bool dead = false;
+	public bool dead = false;	
+	public AudioClip ouchClip;				// Array of clips to play when the player is damaged.
+	public AudioClip[] deathClips;
+
 	
 	private SpriteRenderer healthBar;			// Reference to the sprite renderer of the health bar.
 	private float lastHitTime;					// The time at which the player was last hit.
@@ -78,6 +80,10 @@ public class PlayerHealth : MonoBehaviour
 						s.enabled = false;
 					}
 
+					int i = Random.Range(0, deathClips.Length);
+					AudioSource.PlayClipAtPoint(deathClips[i], transform.position);
+
+
 					GameObject.Instantiate(playerSpirit,transform.position, transform.rotation);
 
 					// ... Trigger the 'Die' animation state
@@ -122,8 +128,7 @@ public class PlayerHealth : MonoBehaviour
 		UpdateHealthBar();
 		
 		// Play a random clip of the player getting hurt.
-//		int i = Random.Range (0, ouchClips.Length);
-		//AudioSource.PlayClipAtPoint(ouchClips[i], transform.position);
+		AudioSource.PlayClipAtPoint(ouchClip, transform.position);
 	}
 	
 	
