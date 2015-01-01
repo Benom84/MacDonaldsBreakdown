@@ -2061,6 +2061,7 @@ MonoBehaviour:
   moveForce: 365
   maxSpeed: 5
 <<<<<<< HEAD
+<<<<<<< HEAD
   jumpClips: []
 =======
   jumpClips:
@@ -2068,6 +2069,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 02be4adc8ce4b164496c3458c4523dfc, type: 3}
   - {fileID: 8300000, guid: 0cfc9a8bf10c7ad41ba5b4002fa749dc, type: 3}
 >>>>>>> origin/master
+=======
+>>>>>>> parent of 727bce9... BulletExpAdded
   jumpForce: 350
 --- !u!61 &1438964888
 BoxCollider2D:
