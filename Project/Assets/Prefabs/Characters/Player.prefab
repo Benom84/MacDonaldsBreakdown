@@ -194,6 +194,10 @@ MonoBehaviour:
     yMax: 10
   moveForce: 365
   maxSpeed: 5
+  jumpClips:
+  - {fileID: 8300000, guid: 96361b49cf3b30f438d17ed6bbd38956, type: 3}
+  - {fileID: 8300000, guid: 02be4adc8ce4b164496c3458c4523dfc, type: 3}
+  - {fileID: 8300000, guid: 0cfc9a8bf10c7ad41ba5b4002fa749dc, type: 3}
   jumpForce: 350
 --- !u!114 &11400004
 MonoBehaviour:
@@ -210,6 +214,13 @@ MonoBehaviour:
   repeatDamagePeriod: 2
   hurtForce: 10
   damageAmount: 10
+  playerSpirit: {fileID: 0}
+  dead: 0
+  ouchClip: {fileID: 8300000, guid: c78b69033d23445499d41c1e8a702624, type: 3}
+  deathClips:
+  - {fileID: 8300000, guid: f6dd004b7a18cee47aadf7865a2e8d06, type: 3}
+  - {fileID: 8300000, guid: a6053a181fe332740b965e9e8c14a9c1, type: 3}
+  - {fileID: 8300000, guid: 47c3f46c84a4bc145b6ee003c233f50d, type: 3}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

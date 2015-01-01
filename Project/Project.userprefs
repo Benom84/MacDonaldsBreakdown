@@ -1,11 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerControl.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\GameMusic.cs">
     <Files>
-      <File FileName="Assets\Scripts\Enemy.cs" Line="376" Column="1" />
-      <File FileName="Assets\Scripts\PlayerHealth.cs" Line="130" Column="14" />
-      <File FileName="Assets\Scripts\PlayerControl.cs" Line="133" Column="1" />
-      <File FileName="Assets\Scripts\Bullet.cs" Line="70" Column="1" />
+      <File FileName="Assets\GameMusic.cs" Line="14" Column="1" />
+      <File FileName="Assets\Scripts\MainMenuMusic.cs" Line="14" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

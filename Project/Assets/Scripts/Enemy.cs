@@ -220,7 +220,7 @@ public class Enemy : MonoBehaviour
 			rigidbody2D.AddForce(new Vector2(jumpForceHor * (left ? -1 : 1), jumpForce/4f));
 
 		int i = Random.Range(0, jumpClips.Length);
-		AudioSource.PlayClipAtPoint(jumpClips, transform.position);
+		AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
 
 		isJumping = true;	
 	
@@ -256,6 +256,9 @@ public class Enemy : MonoBehaviour
 		Destroy (gameObject);
 		// Set dead to true.
 		dead = true;
+		// Play a random audioclip from the deathClips array.
+		int i = Random.Range (0, deathClips.Length);
+		AudioSource.PlayClipAtPoint (deathClips [i], transform.position);
 		return;
 		// Allow the enemy to rotate and spin it by adding a torque.
 		rigidbody2D.fixedAngle = false;
@@ -267,10 +270,7 @@ public class Enemy : MonoBehaviour
 				c.isTrigger = true;
 		}
 
-		// Play a random audioclip from the deathClips array.
-		int i = Random.Range (0, deathClips.Length);
-		AudioSource.PlayClipAtPoint (deathClips [i], transform.position);
-
+	
 		// Create a vector that is just above the enemy.
 		Vector3 scorePos;
 		scorePos = transform.position;
