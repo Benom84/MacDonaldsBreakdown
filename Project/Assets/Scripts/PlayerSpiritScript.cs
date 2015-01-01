@@ -7,15 +7,20 @@ public class PlayerSpiritScript : MonoBehaviour {
 	public float verSpeed = 0.2f;
 	public float horBoundry = 1f;
 	public float verBoundry = 15f;
+	public float loseMenuAppears = 12f;
+	public GameObject loseMenu;
 
 	private float center;
 	private Vector3 goalPos;
 	private float z;
 	private float lerpAdd = 0.3f;
+	private GameObject pauseButton;
+	private bool createdMenu = false;
 
 	void Awake () {
 		center = transform.position.x;
 		z = transform.position.z;
+		pauseButton = GameObject.Find("MenuButton");
 
 		goalPos = new Vector3 (center - horBoundry, transform.position.y + verSpeed, z);
 	}
@@ -24,6 +29,17 @@ public class PlayerSpiritScript : MonoBehaviour {
 	void Update () {
 
 		float y = transform.position.y;
+		if (y > loseMenuAppears) {
+			if (!createdMenu) {
+				createdMenu = true;
+				GameObject.Instantiate (loseMenu, loseMenu.transform.position, loseMenu.transform.rotation);
+				pauseButton.GetComponentInChildren<Pauser>().enabled = false;
+				StopEnemies();
+			}
+
+
+		
+		}
 		if (transform.position.x > (center + horBoundry - 0.1)) {
 			Vector3 currScale = transform.localScale;
 			currScale.x *= -1;
@@ -41,5 +57,24 @@ public class PlayerSpiritScript : MonoBehaviour {
 		if (y > verBoundry)
 						GameObject.Destroy (gameObject);
 	
+	}
+
+
+	//setting delay to 2 seconds
+	IEnumerator wait(float seconds) {
+		yield return new WaitForSeconds(seconds);
+		Debug.Log ("Waited a sec");
+	}
+	
+	void StopEnemies() {
+		Debug.Log ("entering StopEnemies");
+		StartCoroutine (wait (2.0f));
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+		Vector2 noMovement = new Vector2 (0, 0);
+		foreach (GameObject enemy in enemies) {
+			enemy.GetComponentInChildren<Enemy> ().enabled = false;
+			enemy.rigidbody2D.velocity = noMovement;
+			enemy.rigidbody2D.gravityScale = 0;
+		}
 	}
 }

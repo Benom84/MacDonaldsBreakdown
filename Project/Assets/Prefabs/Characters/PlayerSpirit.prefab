@@ -44,6 +44,8 @@ MonoBehaviour:
   verSpeed: 2
   horBoundry: 1
   verBoundry: 15
+  loseMenuAppears: 10
+  loseMenu: {fileID: 100000, guid: 7ed8f53c997e3e44cbf5f36a37bab34f, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

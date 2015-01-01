@@ -93,15 +93,14 @@ public class PlayerHealth : MonoBehaviour
 		}
 	}
 
-	void OnColiisionStay2D(Collision2D col)
+	void OnCollisionStay2D(Collision2D col)
 	{
 		// If the colliding gameobject is an Enemy...
 		if (col.gameObject.tag == "Enemy")
 			// ... and if the time exceeds the time of the last hit plus the time between hits...
-			if (Time.time > lastHitTime + repeatDamagePeriod) {
+			if (Time.time > lastHitTime + repeatDamagePeriod)
 				OnCollisionEnter2D (col);
-			Debug.Log("Calling on collision enter");
-			}
+
 	}
 	
 	void TakeDamage (Transform enemy)
