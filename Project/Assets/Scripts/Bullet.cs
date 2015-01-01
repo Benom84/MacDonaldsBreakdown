@@ -4,9 +4,14 @@ using System.Collections;
 public class Bullet : MonoBehaviour 
 {
 	//public GameObject explosion;		// Prefab of explosion effect.
+	public AudioClip shootClip;				// Array of clips to play when the player is damaged.
+	public AudioClip boomClip;				// Array of clips to play when the player is damaged.
+
 
 	void Start () 
 	{
+		AudioSource.PlayClipAtPoint(shootClip, transform.position);
+
 		// Destroy the rocket after 2 seconds if it doesn't get destroyed before then.
 		Destroy(gameObject, 2);
 	}
@@ -55,6 +60,8 @@ public class Bullet : MonoBehaviour
 		//	Destroy (gameObject);
 		//}
 		else if (col.tag == "ground") {
+			AudioSource.PlayClipAtPoint(boomClip, transform.position);
+
 			Destroy(gameObject);
 			OnExplode();
 		}

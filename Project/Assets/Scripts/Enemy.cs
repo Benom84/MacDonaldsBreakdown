@@ -30,12 +30,15 @@ public class Enemy : MonoBehaviour
 	public int HP = 2;					// How many times the enemy can be hit before it dies.
 	public Sprite deadEnemy;			// A sprite of the enemy when it's dead.
 	public Sprite damagedEnemy;			// An optional sprite of the enemy when it's damaged.
-	public AudioClip[] deathClips;		// An array of audioclips that can play when the enemy dies.
 	public GameObject hundredPointsUI;	// A prefab of 100 that appears when the enemy dies.
 	public float deathSpinMin = -100f;	// A value to give the minimum amount of Torque when dying
 	public float deathSpinMax = 100f;	// A value to give the maximum amount of Torque when dying
 	public float jumpForce = 10f;
 	public float jumpForceHor = 10f;
+
+	public AudioClip[] deathClips;		// An array of audioclips that can play when the enemy dies.
+	public AudioClip[] jumpClips;			// Array of clips for when the player jumps.
+
 
 
 	private SpriteRenderer ren;			// Reference to the sprite renderer.
@@ -215,6 +218,9 @@ public class Enemy : MonoBehaviour
 			rigidbody2D.AddForce(new Vector2(jumpForceHor * (left ? -1 : 1) * (directionChange ? 0.1f : 1), jumpForce * (directionChange ? 1f : 1)));
 		else if (jumpVerticalDirection == 2)
 			rigidbody2D.AddForce(new Vector2(jumpForceHor * (left ? -1 : 1), jumpForce/4f));
+
+		int i = Random.Range(0, jumpClips.Length);
+		AudioSource.PlayClipAtPoint(jumpClips, transform.position);
 
 		isJumping = true;	
 	
